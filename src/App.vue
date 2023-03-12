@@ -43,46 +43,8 @@
 </template>
 <script setup>
     import Header from '@/components/Header.vue'
-    import { ref } from "vue"
-
-    const Todo = ref([
-      {
-        id: 1,
-        name: 'Do yaya'
-      },
-      {
-        id: 2,
-        name: '50 pushups'
-      },
-      {
-        id: 3,
-        name: 'order pizza'
-      }
-    ])
-    // create variable
-    let add = ''
-    let showTodo = true
-    let Filter = null
-    let FilterTodo = ref([])
-    let removeTodo = ref([])
-//    btn add function
-    const addTodo = () => {
-      Todo.value.push(
-          {name: add }
-      )
-      add = ''
-    }
-//     filter
-    const Filters = () => {
-      console.log(Todo.value)
-      FilterTodo = Todo.value.filter(item => item.name.includes(Filter))
-      console.log(FilterTodo)
-      showTodo = false
-    }
-//     remove
-    const remove = (index) => {
-        Todo.value.splice(index, 1)
-    }
+    import { usAddTodoStore } from "@/store/AddTodo";
+    const TodoFunc = usAddTodoStore
 </script>
 <style lang="scss">
   *{
